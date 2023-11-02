@@ -15,7 +15,6 @@ import java.util.Random;
 @PropertySource("application.properties")
 @Getter
 @ToString
-@Component("order")
 public class Ordine {
     private long orderNumber = new Random().nextLong(1000000000000L, 10000000000000L);
     private Tavolo tavolo;
@@ -27,7 +26,7 @@ public class Ordine {
     private int hour;
     private int minute;
 
-    public Ordine(Tavolo tavolo, @Qualifier("getPizze") List<Pizza> pizze, @Qualifier("getBevande") List<Beverage> bevande, @Value("${seat.price}") double seatPrice) {
+    public Ordine(Tavolo tavolo, List<Pizza> pizze, List<Beverage> bevande, @Value("${seat.price}") double seatPrice) {
         this.tavolo = tavolo;
         this.pizze = pizze;
         this.clientsNumber = 3;
@@ -36,7 +35,7 @@ public class Ordine {
         this.minute = LocalDateTime.now().getMinute();
         pizze.forEach(pizza -> total += pizza.getPrice());
         bevande.forEach(beverage -> total += beverage.getPrice());
-        setTotal(total + clientsNumber * seatPrice);
+        this.total=total+clientsNumber*seatPrice;
     }
 
     public void setOrderState(OrderState orderState) {

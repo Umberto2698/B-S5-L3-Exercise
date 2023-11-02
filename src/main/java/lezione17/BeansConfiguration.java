@@ -54,7 +54,7 @@ public class BeansConfiguration {
         List<Topping> toppings = new ArrayList<>();
         toppings.add(getFunghi());
         toppings.add(getProsciutto());
-        return new Pizza(2500, 7.00, "Cocò", toppings);
+        return new Pizza(2500, 7.00, "Prosciutto e funghi", toppings);
     }
 
     @Bean
@@ -118,39 +118,5 @@ public class BeansConfiguration {
     @Bean
     Topping getSalamimno() {
         return new Topping("Salamino piccante", 2.00);
-    }
-
-    @Bean
-    List<Pizza> getPizze() {
-        List<Pizza> pizze = new ArrayList<>();
-        pizze.add(getDiavola());
-        pizze.add(getTonnoCiplla());
-        return pizze;
-    }
-
-    @Bean
-    List<Beverage> getBevande() {
-        List<Beverage> bevande = new ArrayList<>();
-        bevande.add(getCocaCola());
-        bevande.add(getBirra());
-        return bevande;
-    }
-
-    @Bean
-    Menu getMenu() {
-        List<Pizza> pizze = new ArrayList<>();
-        List<Beverage> bevande = new ArrayList<>();
-        pizze.add(getCoco());
-        pizze.add(getBase());
-        pizze.add(getBaby());
-        pizze.add(getDiavola());
-        pizze.add(getBismark());
-        pizze.add(getDiavola());
-        pizze.add(grtProsciuttoEFunghi());
-        pizze.add(getTonnoCiplla());
-        bevande.add(getWater());
-        bevande.add(getCocaCola());
-        bevande.add(getBirra());
-        return new Menu(pizze, bevande);
     }
 }
