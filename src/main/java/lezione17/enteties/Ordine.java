@@ -33,7 +33,12 @@ public class Ordine {
         this.bevande = bevande;
         this.hour = LocalDateTime.now().getHour();
         this.minute = LocalDateTime.now().getMinute();
-        pizze.forEach(pizza -> total += pizza.getPrice());
+        pizze.forEach(pizza -> {
+            if (pizza.getName().equals("Margherita")) {
+                pizza.getToppings().forEach(topping -> total += topping.getPrice());
+            }
+            total += pizza.getPrice();
+        });
         bevande.forEach(beverage -> total += beverage.getPrice());
         this.total=total+clientsNumber*seatPrice;
     }

@@ -1,8 +1,8 @@
 package lezione17;
 
 import lezione17.enteties.Beverage;
-import lezione17.enteties.Menu;
 import lezione17.enteties.Pizza;
+import lezione17.enteties.Tavolo;
 import lezione17.enteties.Topping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -118,5 +118,50 @@ public class BeansConfiguration {
     @Bean
     Topping getSalamimno() {
         return new Topping("Salamino piccante", 2.00);
+    }
+
+    @Bean
+    Tavolo table1() {
+        return new Tavolo(1);
+    }
+
+    @Bean
+    Tavolo table2() {
+        return new Tavolo(2);
+    }
+
+    @Bean
+    Tavolo table3() {
+        return new Tavolo(3);
+    }
+
+    @Bean
+    Tavolo table4() {
+        return new Tavolo(4);
+    }
+
+    @Bean
+    Tavolo table5() {
+        return new Tavolo(5);
+    }
+
+    @Bean
+    Tavolo table6() {
+        return new Tavolo(6);
+    }
+
+    @Bean
+    Tavolo table7() {
+        return new Tavolo(7);
+    }
+
+    @Bean
+    Tavolo table8() {
+        return new Tavolo(8);
+    }
+
+    @Bean
+    Tavolo table9() {
+        return new Tavolo(9);
     }
 }

@@ -19,9 +19,5 @@ public class Lezione17Application {
     }
 
     public static void configurationClass() throws InterruptedException {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Lezione17Application.class);
-        Menu menù=(Menu) ctx.getBean("menù");
-        menù.printMenu();
-        ctx.close();
     }
 }
