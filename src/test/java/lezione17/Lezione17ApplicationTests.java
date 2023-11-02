@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class Lezione17ApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void totalOrder() {
+    }
 
 }

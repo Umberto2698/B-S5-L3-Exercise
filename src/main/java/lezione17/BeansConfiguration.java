@@ -1,16 +1,17 @@
 package lezione17;
 
-import lezione17.enteties.Beverage;
-import lezione17.enteties.Pizza;
-import lezione17.enteties.Tavolo;
-import lezione17.enteties.Topping;
+import lezione17.enteties.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfiguration {
     @Bean
     Pizza getBase() {
@@ -163,5 +164,10 @@ public class BeansConfiguration {
     @Bean
     Tavolo table9() {
         return new Tavolo(9);
+    }
+
+    @Bean
+    Ordine getOrder(@Value("${seat.price}") double seatPrice) {
+        return new Ordine(table1(), Stream.of(getDiavola(), getBase()).toList(), Stream.of(getBirra(), getWater()).toList(), 2, seatPrice);
     }
 }

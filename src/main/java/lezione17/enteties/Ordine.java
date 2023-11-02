@@ -3,14 +3,12 @@ package lezione17.enteties;
 import lezione17.enums.OrderState;
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
-@PropertySource("application.properties")
+
 @Getter
 @ToString
 public class Ordine {
@@ -24,7 +22,7 @@ public class Ordine {
     private int hour;
     private int minute;
 
-    public Ordine(Tavolo tavolo, List<Pizza> pizze, List<Beverage> bevande, int clientsNumber, @Value("${seat.price}") double seatPrice) {
+    public Ordine(Tavolo tavolo, List<Pizza> pizze, List<Beverage> bevande, int clientsNumber, double seatPrice) {
         this.tavolo = tavolo;
         this.pizze = pizze;
         this.clientsNumber = clientsNumber;
