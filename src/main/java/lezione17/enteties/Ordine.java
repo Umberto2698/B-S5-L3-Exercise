@@ -3,10 +3,8 @@ package lezione17.enteties;
 import lezione17.enums.OrderState;
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,21 +24,23 @@ public class Ordine {
     private int hour;
     private int minute;
 
-    public Ordine(Tavolo tavolo, List<Pizza> pizze, List<Beverage> bevande, @Value("${seat.price}") double seatPrice) {
+    public Ordine(Tavolo tavolo, List<Pizza> pizze, List<Beverage> bevande, int clientsNumber, @Value("${seat.price}") double seatPrice) {
         this.tavolo = tavolo;
         this.pizze = pizze;
-        this.clientsNumber = 3;
+        this.clientsNumber = clientsNumber;
         this.bevande = bevande;
         this.hour = LocalDateTime.now().getHour();
         this.minute = LocalDateTime.now().getMinute();
         pizze.forEach(pizza -> {
-            if (pizza.getName().equals("Margherita")) {
+            if (pizza.getName().equals("Margherita") && pizza.getToppings() != null) {
+
                 pizza.getToppings().forEach(topping -> total += topping.getPrice());
+
             }
             total += pizza.getPrice();
         });
         bevande.forEach(beverage -> total += beverage.getPrice());
-        this.total=total+clientsNumber*seatPrice;
+        this.total = total + clientsNumber * seatPrice;
     }
 
     public void setOrderState(OrderState orderState) {
